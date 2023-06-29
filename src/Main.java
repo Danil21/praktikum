@@ -1,6 +1,5 @@
 import java.util.Scanner;
-
-public class Practicum {
+public class Main {
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -17,7 +16,7 @@ public class Practicum {
                 } else if (command == 1) {
                     
                 } else if (command == 2) {
-                    stepTracker.addNewNumberStepsPerDay();
+                    stepTracker.addNewNumberStepsPerDay(scanner);
                 } else if (command == 3) {
                     stepTracker.printStatistic();
                 } else {
