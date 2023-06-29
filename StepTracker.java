@@ -1,43 +1,48 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+
 public class StepTracker {
-
-    MonthData monthData = new MonthData();
-
+    Scanner scanner;
     MonthData monthToData[] = new MonthData[12];
-    int goalByStepsPerDay;
 
-    ArrayList<Convertor> addStep;
+    int goalByStepsPerDay = 10000;
 
-    public StepTracker(Scanner scanner) {
-        addStep = new ArrayList<>();
-        scanner = new Scanner(System.in);
+    StepTracker(Scanner scan) {
+        scanner = scan;
+
+        for (int i = 0; i < monthToData.length; i++) {
+            monthToData[i] = new MonthData();
+        }
     }
 
     void addNewNumberStepsPerDay(Scanner scanner) {
         System.out.println("Введите номер месяца");
-        String moth = scanner.nextLine();
+        int moth = scanner.nextInt();
+        if(moth <= 12 | moth == 0 || moth < 0 ){System.out.println("Вы ввели неправильное число месяца"); break;}
 
-        System.out.println("Введите номер дня");
-        String day = scanner.nextLine();
+        System.out.println("Введите день месяца от 1 до 30");
+        int day = scanner.nextInt();
+        if(day <= monthData.dataMoth.length | day == 0 || day < 0 ){System.out.println("Вы ввели неправильное число дня"); break;}
 
-        System.out.println("Введите количество шагов");
+        System.out.println("Введите количество пройденных шагов");
         int step = scanner.nextInt();
+        if (step == 0 || step < 0 ){System.out.println("Вы ввели неправильное число"); break; }
 
-        addStep.add(new Convertor(moth, day, step));
+        MonthData monthData = new MonthData(moth);
+        monthData.days[day-1] += step; 
     }
 
-    public static double findMaxExpense(double[] expenses){
-        double maxExpense = 0;
-        for (int i = 0; i < expenses.length; i++) {
-            if (expenses[i] > maxExpense) {
-                maxExpense = expenses[i];
-            }
-        }
-        // Печать должна остаться здесь — для получения максимальной траты нужно вызвать метод
-        System.out.println("Самая большая сумма расходов на этой неделе составила " + maxExpense + " руб.");
-        return maxExpense;
+    void changeStepGoal(Scanner scanner){
+        int getGoalUser = scanner.nextInt();
+        if(getGoalUser > 0 || getGoalUser != 0) {getGoalUser = goalByStepsPerDay;}
+        else{System.out.println("Введите число больше нуля");}
     }
+
+    void printStatistic(){
+        Converter converter = new Converter();
+      // 
+    }
+
+
 }
 
 
