@@ -9,16 +9,16 @@ public class Main {
                 printMenu();
 
                 int command = scanner.nextInt();
-
+                   
                 if (command == 0) {
                     System.out.println("Выход.");
                     break;
                 } else if (command == 1) {
-                    
+                  stepTracker.addNewNumberStepsPerDay(scanner);
                 } else if (command == 2) {
-                    stepTracker.addNewNumberStepsPerDay(scanner);
+                    stepTracker.changeStepGoal(scanner);
                 } else if (command == 3) {
-                    stepTracker.printStatistic();
+                    stepTracker.printStatistic(scanner);
                 } else {
                     System.out.println("Извините, такой команды пока нет.");
                 }

@@ -5,11 +5,7 @@ public class MonthData {
     int[] dataMoth;
     int[] days;
 
-    public MonthData(int moth) {
-	}
-
 	public void getStepForDay(){
-
         Calendar calendar = Calendar.getInstance();
         dataMoth = new int[calendar.getActualMaximum(Calendar.DAY_OF_MONTH)];
     }
@@ -41,15 +37,21 @@ public class MonthData {
         return maxStepsCompleted;
     }
 
-    int bestSeries(int goalByStepsPerDay){
-        int maxBest = 0; 
+        int bestSeries(int goalByStepsPerDay){
+    
+        int max = 0;
+        int current = 0;
         for (int i = 0; i < days.length; i++) {
             if (days[i] >= goalByStepsPerDay) {
-                maxBest = days[i];
-            }
-                // дописать 
-        return  maxBest;
+                current++;
+                if (current > max) {
+                   max = current;
+                }
+            } else { current = 0; }
+        }
+        return max;
+          
       }
-        return  maxBest;
-    }
+
 }
+
