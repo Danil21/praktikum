@@ -6,6 +6,7 @@ public class Main {
             StepTracker stepTracker = new StepTracker(scanner);
 
             while (true) {
+                System.out.println("\n");
                 printMenu();
 
                 int command = scanner.nextInt();
@@ -20,7 +21,7 @@ public class Main {
                 } else if (command == 3) {
                     stepTracker.printStatistic(scanner);
                 } else {
-                    System.out.println("Извините, такой команды пока нет.");
+                    System.out.println("Извините, такой команды пока нет. \n");
                 }
             }
         }
@@ -28,7 +29,7 @@ public class Main {
 
     public static void printMenu() {
         System.out.println("Что вы хотите сделать? ");
-        System.out.println("1 - Вывод количесво шагов за опреденный день, 1-ПН, 2-ВТ, 3-СР, 4-ЧТ, 5-ПТ, 6-СБ, 7-ВС");
+        System.out.println("1 - Ввести количесво шагов за опреденный день");
         System.out.println("2 - Изменить цель по кол-во шагов");
         System.out.println("3 - Посмотреть статистику за определенный месяц.");
         System.out.println("0 - Выход.");

@@ -2,17 +2,12 @@ import java.util.Calendar;
 
 public class MonthData {
 
-    int[] dataMoth;
-    int[] days;
-
-	public void getStepForDay(){
-        Calendar calendar = Calendar.getInstance();
-        dataMoth = new int[calendar.getActualMaximum(Calendar.DAY_OF_MONTH)];
-    }
+    Calendar calendar = Calendar.getInstance();
+    int[] days = new int[calendar.getActualMaximum(Calendar.DAY_OF_MONTH)];;
 
     void printDaysAndStepsFromMonth(){
         for (int i = 0; i < days.length; i++) {
-            System.out.println((i + 1) + days[i] + "День :" + dataMoth[days[i]]);
+            System.out.println((i + 1) + " День : " + days[i]);
         }
     }
 
@@ -25,7 +20,7 @@ public class MonthData {
         return sum;
     }
 
-    int maxSteps(int[] days){
+    int maxSteps(){
         int maxStepsCompleted = 0;
         for (int i = 0; i < days.length; i++) {
             if (days[i] > maxStepsCompleted) {
@@ -33,7 +28,7 @@ public class MonthData {
             }
         }
 
-        System.out.println("Максимальное количество шагов за месяц" + maxStepsCompleted);
+        System.out.println("Максимальное количество шагов за месяц : " + maxStepsCompleted);
         return maxStepsCompleted;
     }
 
