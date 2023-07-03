@@ -50,7 +50,7 @@ public class StepTracker {
         monthToData[Month - 1].printDaysAndStepsFromMonth();   // вывод общей статистики по дням
 
         System.out.println("Сумма шагов за месяц : " +  monthData.sumStepsFromMonth());        // вывод суммы шагов за месяц
-        monthData.maxSteps();                 // вывод максимального пройденного количества шагов за месяц
+        System.out.println("Максимальное количество шагов за месяц : " + monthData.maxSteps());               // вывод максимального пройденного количества шагов за месяц
         System.out.println("Средне пройденное кол-во шагов за месяц : " + (sumSteps / monthData.days.length));    // вывод среднего пройденного количества шагов за месяц
         System.out.println("Пройденная дистанция в километрах : " + converter.convertToKm(monthData.sumStepsFromMonth())); //пройденная дистанция (в км);
         System.out.println("Количество сожжённых килокалорий за месяц : " + converter.convertStepsToKilocalories(monthData.sumStepsFromMonth()));  ;  // вывод количества сожжённых килокалорий за месяц

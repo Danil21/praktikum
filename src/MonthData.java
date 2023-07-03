@@ -1,13 +1,10 @@
-import java.util.Calendar;
-
 public class MonthData {
 
-    Calendar calendar = Calendar.getInstance();
-    int[] days = new int[calendar.getActualMaximum(Calendar.DAY_OF_MONTH)];;
+    int[] days = new int[30];
 
     void printDaysAndStepsFromMonth(){
         for (int i = 0; i < days.length; i++) {
-            System.out.println((i + 1) + " День : " + days[i]);
+            System.out.println((i + 1) + " день :" + days[i]);
         }
     }
 
@@ -27,8 +24,6 @@ public class MonthData {
                 maxStepsCompleted = days[i];
             }
         }
-
-        System.out.println("Максимальное количество шагов за месяц : " + maxStepsCompleted);
         return maxStepsCompleted;
     }
 
