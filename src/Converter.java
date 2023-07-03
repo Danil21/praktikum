@@ -1,11 +1,15 @@
 public class Converter {
     
     int convertToKm(int steps){
-        return (steps*75) / 100000;
+        int stepLengthCm = 75; //1 шаг в сантиметрах
+        int cmToKm = 100000; //1 километр – 100 000 сантиметров
+        return (steps*stepLengthCm) / cmToKm;
     }
 
     int convertStepsToKilocalories(int steps){
-        return (steps*50) / 1000;
+        int caloriesPerStep = 50; //калорий на шаг
+        int caloriesPerKCalories = 1000; //1 кКалория - 1000 калорий
+        return (steps*caloriesPerStep) / caloriesPerKCalories;
     }
 
 }
