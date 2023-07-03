@@ -34,7 +34,7 @@ public class StepTracker {
 
     void changeStepGoal(Scanner scanner){
         int getGoalUser = scanner.nextInt();
-        if(getGoalUser > 0  && getGoalUser != 0) {goalByStepsPerDay = getGoalUser;}
+        if(getGoalUser > 0  || getGoalUser != 0) {goalByStepsPerDay = getGoalUser;}
         else{System.out.println("Введите число больше нуля");}
     }
 
