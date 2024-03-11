@@ -2,6 +2,7 @@ package tasks;
 
 import enums.Status;
 
+import java.time.Instant;
 import java.util.Objects;
 
 
@@ -11,6 +12,12 @@ public class Subtask extends Task {
 
     public Subtask(String description, String name, Status status, int epicId) {
         super(description, name, status);
+        this.epicId = epicId;
+    }
+
+    public Subtask(
+            String description, String name, Status status, int epicId, Instant startTime, long duration) {
+        super(description, name, status, startTime, duration);
         this.epicId = epicId;
     }
 

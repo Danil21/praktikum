@@ -2,6 +2,7 @@ package tasks;
 
 import enums.Status;
 
+import java.time.Instant;
 import java.util.Objects;
 
 public class Task {
@@ -10,11 +11,21 @@ public class Task {
     private String description;
     private Integer id;
     private Status status;
+    private Instant startTime;
+    private long duration;
 
     public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
+    }
+
+    public Task(String description, String name, Status status, Instant startTime, long duration) {
+        this.description = description;
+        this.name = name;
+        this.status = status;
+        this.startTime = startTime;
+        this.duration = duration;
     }
 
     public String getName() {
@@ -32,6 +43,23 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public Instant getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Instant startTime) {
+        this.startTime = startTime;
+    }
+
 
     public Status getStatus() {
         return status;
