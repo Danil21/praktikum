@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tasks.Task;
 
+import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,60 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InMemoryHistoryManagerTest {
 
+    protected HistoryManager manager = new InMemoryHistoryManager();
 
-//    public void printTasks() {
-//        if (tasks.size() == 0) {
-//            System.out.println("Task list is empty");
-//            return;
-//        }
-//
-//        for (Task task : tasks.values()) {
-//            System.out.println("Task{" +
-//                    "description='" + task.getDescription() + '\'' +
-//                    ", id=" + task.getId() +
-//                    ", name='" + task.getName() + '\'' +
-//                    ", status=" + task.getStatus() +
-//                    '}');
-//        }
-//    }
-//
-//    public void printEpics() {
-//        if (epics.size() == 0) {
-//            System.out.println("Epic list is empty");
-//            return;
-//        }
-//        for (Epic epic : epics.values()) {
-//            System.out.println("Epic{" +
-//                    "subtasksIds=" + epic.getSubtaskIds() +
-//                    ", description='" + epic.getDescription() + '\'' +
-//                    ", id=" + epic.getId() +
-//                    ", name='" + epic.getName() + '\'' +
-//                    ", status=" + epic.getStatus() +
-//                    '}');
-//        }
-//    }
-
-    HistoryManager manager;
     private int id = 0;
 
     public int generateId() {
         return ++id;
     }
 
-   // protected Task createTask() {
-//        return new Task("Description", "Title", Status.NEW, Instant.now(), 0);
-//    }
     protected Task createTask() {
-        return new Task("Description", "Title", Status.NEW);
+        return new Task("Description", "Title", Status.NEW, Instant.now(), 0);
     }
 
-    @BeforeEach
-    public void beforeEach() {
-        manager = new InMemoryHistoryManager();
-    }
 
     @Test
-    public void shouldAddTasksToHistory() {
+    public void addTasksToHistory() {
         Task task1 = createTask();
         int newTaskId1 = generateId();
         task1.setId(newTaskId1);
@@ -82,7 +44,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void shouldRemoveTask() {
+    public void removeTask() {
         Task task1 = createTask();
         int newTaskId1 = generateId();
         task1.setId(newTaskId1);
@@ -100,7 +62,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void shouldRemoveOnlyOneTask() {
+    public void removeOnlyOneTask() {
         Task task = createTask();
         int newTaskId = generateId();
         task.setId(newTaskId);
@@ -110,7 +72,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void shouldHistoryIsEmpty() {
+    public void historyIsEmpty() {
         Task task1 = createTask();
         int newTaskId1 = generateId();
         task1.setId(newTaskId1);
@@ -127,7 +89,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void shouldNotRemoveTaskWithBadId() {
+    public void notRemoveTaskWithBadId() {
         Task task = createTask();
         int newTaskId = generateId();
         task.setId(newTaskId);
