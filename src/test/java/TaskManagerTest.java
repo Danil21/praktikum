@@ -15,18 +15,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class TaskManagerTest<T extends TaskManager> {
 
-    protected TaskManager manager = Managers.getInMemoryTaskManager(Managers.getDefault());
+    protected TaskManager manager = Managers.getDefault();
 
     protected Task task() {
-        return new Task("Description", "Title", Status.NEW, Instant.now(), 0);
+        return new Task("Description", "Title", Status.NEW);
     }
 
     protected Epic epic() {
-        return new Epic("Description", "Title", Status.NEW, Instant.now(), 0);
+        return new Epic("Description", "Title", Status.NEW);
     }
 
     protected Subtask createSubtask(Epic epic) {
-        return new Subtask("Description", "Title", Status.NEW, epic.getId(), Instant.now(), 0);
+        return new Subtask("Description", "Title", Status.NEW, epic.getId());
     }
 
     @Test

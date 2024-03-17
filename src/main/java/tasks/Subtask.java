@@ -1,8 +1,8 @@
 package tasks;
 
 import enums.Status;
+import enums.TaskType;
 
-import java.time.Instant;
 import java.util.Objects;
 
 
@@ -15,10 +15,8 @@ public class Subtask extends Task {
         this.epicId = epicId;
     }
 
-    public Subtask(
-            String description, String name, Status status, int epicId, Instant startTime, long duration) {
-        super(description, name, status, startTime, duration);
-        this.epicId = epicId;
+    public TaskType getType() {
+        return TaskType.SUBTASK;
     }
 
     public int getEpicId() {

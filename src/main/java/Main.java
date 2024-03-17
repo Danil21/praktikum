@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TaskManager taskManager = Managers.getInMemoryTaskManager(Managers.getDefault());
+        TaskManager taskManager = Managers.getDefault();
 
         System.out.println("!-------------------------- Epic 1---------------------------!\n");
         System.out.println("--- Create EPIC with 4 subTask ---\n");
@@ -36,7 +36,6 @@ public class Main {
         System.out.println("--- Get subtask by id ---");
         Subtask subtask = taskManager.getSubtaskById(subtaskOne.getId());
         System.out.println(taskManager.getSubtaskById(subtask.getId()));
-
 
         System.out.println("--- Update subtask ---");
         taskManager.updateSubtask(subtask);
