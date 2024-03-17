@@ -60,7 +60,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             for (Integer taskId : history) {
                 taskManager.historyManager.add(taskManager.findTask(taskId));
             }
-              // taskManager.getId()  = generatorId;
+            idTask = generatorId;
         } catch (IOException e) {
             throw new ManagerSaveException("Can't read form file: " + file.getName(), e);
         }
