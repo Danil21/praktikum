@@ -38,6 +38,8 @@ public interface TaskManager {
 
     List<Subtask> getAllSubtasksByEpicId(int id);
 
+    List<Subtask> getAllSubtasks();
+
     List<Task> getHistory();
 
     void updateTask(Task task);

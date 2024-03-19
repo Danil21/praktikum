@@ -12,8 +12,8 @@ public class InMemoryTaskManager implements TaskManager {
     protected final Map<Integer, Task> tasks = new HashMap<>();
     protected final Map<Integer, Subtask> subTasks = new HashMap<>();
     protected final Map<Integer, Epic> epics = new HashMap<>();
-    private final HistoryManager historyManager;
-    private int idTask = 0;
+    protected final HistoryManager historyManager;
+    protected static int idTask = 0;
 
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;
@@ -100,7 +100,7 @@ public class InMemoryTaskManager implements TaskManager {
             for (Integer subtaskId : epic.getSubtaskIds()) {
                 subTasks.remove(subtaskId);
             }
-            epics.remove(epicId); // без него epic не удаляеться, так как эпик может быть без Subtask (в момент создания юзером)
+            epics.remove(epicId); // без него epic не удаляется, так как эпик может быть без Subtask (в момент создания юзером)
             System.out.println(epicId + " epic is DELETED");
         } else {
             printError("Epic");
@@ -109,7 +109,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllTasks() {
-
         for (Task task : tasks.values()) {
             historyManager.remove(task.getId());
         }
@@ -120,7 +119,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllEpics() {
-
         for (Subtask subtask : subTasks.values()) {
             historyManager.remove(subtask.getId());
         }
@@ -162,6 +160,15 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
+    public List<Subtask> getAllSubtasks() {
+        if (subTasks.isEmpty()) {
+            System.out.println("Subtasks list is empty");
+            return Collections.emptyList();
+        }
+        return new ArrayList<>(subTasks.values());
+    }
+
+    @Override
     public void updateTask(Task task) {
         if (tasks.containsKey(task.getId())) {
             tasks.put(task.getId(), task);
@@ -186,6 +193,10 @@ public class InMemoryTaskManager implements TaskManager {
     public Subtask getSubtaskById(int id) {
         historyManager.add(subTasks.get(id));
         return subTasks.get(id);
+    }
+
+    public HistoryManager getHistoryManager() {
+        return historyManager;
     }
 
     @Override

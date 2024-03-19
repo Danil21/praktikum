@@ -1,7 +1,9 @@
 package tasks;
 
 import enums.Status;
+import enums.TaskType;
 
+import java.time.Instant;
 import java.util.Objects;
 
 public class Task {
@@ -11,11 +13,17 @@ public class Task {
     private Integer id;
     private Status status;
 
+
     public Task(String name, String description, Status status) {
         this.name = name;
         this.description = description;
         this.status = status;
     }
+
+    public TaskType getType() {
+        return TaskType.TASK;
+    }
+
 
     public String getName() {
         return name;
